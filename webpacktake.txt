@@ -1,0 +1,270 @@
+
+WebpackÀí½â£ºÔËÓÃ³ÌĞòµÄÄ£¿é´ò°üÆ÷¡£Ö÷ÒªÓÃÓÚ±àÒë£¬´ò°ü£¬×ª»»£¬´úÂë·Ö¸î£¬°ÑµÚ3·½ÄÚ¿ã×÷ÎªÄ£¿éÊ¹ÓÃ£¬Ä£¿éÈÈ¸üĞÂ¡££¨°ÑcssÓëjs´ò°ü³É£©ä¯ÀÀÆ÷ÄÜ¹»ÔËĞĞµÄÎÄ¼ş¡£
+1.webpack°²×°ºÍÃüÁîĞĞ
+ĞÂ½¨ÎÄ¼ş->npm init ->npm install webpack ¡ªsave-dev->ls(²é¿´)->ĞÂ½¨¸öjsÎÄ¼ş
+Main:ÊÇÖ¸°ÑËùÓĞÒıÈëµÄ²å¼ş¶¼ÁĞ³öÀ´
+¡ªdsiplay-reasons  ÊÇÖ¸ÒòÎªÄ£¿éµÄÔ­Òò
+2.½¨Á¢webpackµÄÅäÖÃÎÄ¼ş
+1.Src:Ô´ÎÄ¼ş
+Src->js
+Src->css
+Src->images
+2.Dist£º´ò°üºó¾²Ì¬Ä¿Â¼
+¸øsrcÒ»¸ö¾²Ì¬Ò³Ãæ
+3.½¨Á¢webpack.config.jsÅäÖÃÎÄ¼ş(ÒòÎªÕâ¸öÅäÖÃÎÄ¼şÊÇÄ¬ÈÏµÄ¿ÉÒÔ¡ªconfig ÎÄ¼şÃûÖ¸¶¨)
+	1.module.exports={
+		entry:¡¯./src/js/main.js¡¯//´ò°üÈë¿Ú
+		output:{
+		path:¡¯./dist/js¡¯//´ò°üºóµÄÄ¿Â¼
+		filename:¡¯bundle.js¡¯´ò°üºóµÄÎÄ¼şÃû
+		}
+	}
+2.¿ÉÒÔÔÚpackage.jsonÏÂÖ¸¶¨script½Å±¾¿ÉÒÔÖ¸¶¨ÃüÁîĞĞ²ÎÊı
+( webpack.config.js(Ö¸¶¨ÎÄ¼ş)   ¡ªprogress(´ò°ü¹ı³Ì)  ¡ªdisplay-module(´ò°üÄ£¿é)  ¡ªcolors(´ò°ü×ÖÌåÑÕÉ«) ¡ªdisplay-reason(´ò°üÔ­Òò))
+¡°build¡±:¡±build ¡ªconfig webpack.config.js  ¡ªprogress ¡ªdisplay-module ¡ªdisplay-reason¡±
+3.npm install babel-loader --save×ª»¯
+3.webpack µÄentryÓëoutputÒÔ¼°html-webpack-plugin²å¼ş
+Entry£ºÕû¸ö´ò°üÎÄ¼şµÄÈë¿ÚÖ¸Ê¾
+1.¿ÉÒÔÊÇµ¥Ò³ÃæµÄµ¥¸öÎÄ¼şÈë¿Ú£º
+entry:'./src/js/main.js',
+2.¿ÉÒÔÊÇÊı×é  ¶à¸öÒ³Ãæ»¥ÏàÒÀÀµµÄÎÄ¼şÈë¿Ú:
+entry:['./src/js/main.js','./src/js/a.js'],
+3.¼üÖµ¶Ô·½Ê½£ºkeyÊÇÖ¸¶¨ÎÄ¼ş   valueÊÇÂ·¾¶
+entry:{
+    main:'./src/js/main.js',
+    a:'./src/js/a.js'
+  },
+output:µ¼³öÎÄ¼ş
+1.ÊôĞÔpath:
+¿ÉÒÔÊÇĞ´ÊµµÄÂ·¾¶£º¡®./dist¡¯
+
+2.ÊôĞÔfilename:
+¿ÉÒÔÊÇĞ´ËÀµÄ×Ö·û´®:filename:¡¯boundle.js¡¯Ö»»áÉú³ÉÒ»¸öÎÄ¼ş
+¿ÉÒÔÊÇfilename:¡¯[name].js¡¯  [name]ÊÇÒ»¸öÕ¼Î»·û
+4.×Ô¶¯Éú³ÉÏîÄ¿ÖĞµÄhtml
+1°²×°npm i html-webpack-plugin --save-dev
+Êä³öhtmlÄ£°åÊÇÖ¸´øÓĞhashÖµµÄÎÄ¼ş×Ô¶¯ÒıÓÃ
+2ÒıÓÃ£ºvar htmlWebpackPlugin=require(¡®html-webpack-plugins¡¯)
+3Ê¹ÓÃ£º 
+* µ¥Ò³ÃæÖ»ĞèÒªµ÷ÓÃÒ»´Î 
+ plugins:[
+    new htmlWebpackPlugin({
+	 template:'index.html¡¯,
+	title:¡±a¡¯
+	inject:head//ÊÇÖ¸ÎÄ¼ş±»Ìí¼ÓÔÚÍ·²¿»¹ÊÇÎ²²¿
+	 minify:{//htmlµÄÑ¹ËõÅäÖÃ
+       		 removeComments:trueÈ¥µô×¢ÊÍ
+      	}
+
+    })
+  ]
+* ¶àÒ³ÃæÓĞ½á¹¹Ò³Ãæ¾Íµ÷ÓÃ¼¸´Î
+5.´¦ÀíÏîÄ¿ÖĞµÄ×ÊÔ´ÎÄ¼ş
+1.loadersÌØĞÔ£º´¦Àí×ÊÔ´²ÎÊı  ·µ»ØĞÂµÄ×ÊÔ´  
+2.babel-loader×ª»»es6
+  °²×°:npm install --save-dev babel-loader babel-core
+ÅäÖÃ£ºmodule:{
+    loaders:[{
+      test: /\.js$/,
+      loaders: 'babel-loader',
+	query:{
+	presets:[¡®latest¡¯]//ÊÇÖ¸±àÒëes5£¬es6£¬
+Es7¿ÉÒÔÖ¸¶¨±àÒë¾ßÌåÄÄÒ»¸ö¡£±ØĞë°²×°:npm install babel-preset-env --save-dev
+
+	}
+    }]
+  },
+3.¾ø¶ÔÂ·¾¶
+var path=require('path')
+ function resolve(dir) {
+  return path.join(__dirname, '.', dir)
+}
+4.´¦Àícss
+°²×°£ºnpm I style-loader css-loader ¡ªsave-dev
+ÅäÖÃ£º
+       {
+      test:'/\.css$/',
+      loader:'styles-loader!css-loader'
+ loaders: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', 'less-loader'])//±ØĞë°´Õâ¸öË³Ğòcss-loader','postcss-loader','less-loader´ÓÓÒÍù×óÖ´ĞĞ
+    }
+
+5.°²×°less
+Npm I less-loader less ¡ªsave-dev
+{
+Test:/\.less$/,
+Loader:¡¯style!¡¯
+}
+6.Í¼Æ¬ÎÄ¼ş´¦Àí
+.npm i file-loader --save-dev´¦ÀíÎÄ¼ş
+
+
+
+Es6´¦Àí±àÒë
+npm install --save-dev babel-loader babel-core babel-preset-env webpack
+module: {
+  rules: [
+    {
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['env']
+        }
+      }
+    }
+  ]
+}
+¶Ôhtml²Ù×÷
+°²×°npm install html-webpack-plugin --save-dev//¶¯Ì¬Ìí¼ÓÍâ²¿×ÊÔ´Èç£ºjs£¬css£¬//¿ÉÒÔÉú²ú¶à¸öhtml¶à¸öÈë¿Ú
+ÒıÈë£ºconst HtmlWebpackPlugin = require('html-webpack-plugin');
+ new HtmlWebpackPlugin({
+      template:'index.html¡¯,//Ö¸¶¨±¾µØÄ£°åÎ»ÖÃ
+      filename:'index.html¡¯,//Ö¸¶¨Êä³öÄ¿Â¼ÎÄ¼şÎ»ÖÃ
+      title:'index',
+      inject:true,
+      hash:true,
+      chunks:['index']
+    })
+ÅäÖÃ
+¸ù¾İÉèÖÃµÄÄ£°å£¬ÔÚÃ¿´ÎÔËĞĞºóÉú³É¶ÔÓ¦µÄÄ£°åÎÄ¼ş£¬Í¬Ê±ËùÒÀÀµµÄÎÄ¼şÒ²»á±»ÒıÈë
+¿½±´×ÊÔ´²å¼ş
+npm install --save-dev copy-webpack-plugin  ¿½±´ÎÄ¼ş»òÕßÊÇÎÄ¼ş¼Ğ
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+°ÑwebpackÏÂ¿ª·¢»·¾³¾²Ì¬×ÊÔ´¿½±´µ½´ò°üÎÄ¼ş¼ĞÏÂ
+new CopyWebpackPlugin([{
+From:¡±¡±¶¨ÒåÒª¿½±´µÄ×ÊÔ´
+To:¶¨Òå¿½±´µ½Ä¿±êÄ¿Â¼
+Igore£ººöÂÔ¿½±´Ö¸¶¨µÄÎÄ¼ş
+}])
+°²×°lessºÍcss
+npm install style-loader --save-dev °ÉjsÖĞcssÌí¼Óµ½style
+npm install css-loader --save-dev  °ÉjsÖĞµÄcss´¦Àíµô
+Npm install postcss-loader ¡ªsave-dev  ¸øcssÌí¼ÓÇ°×º
+npm install autoprefixer
+npm install --save-dev less-loader less±àÒëless
+module.exports = {
+    ...
+    module: {
+        rules: [{
+            test: /\.less$/,
+            use: [{
+                loader: "style-loader" // creates style nodes from JS strings 
+            }, {
+                loader: "css-loader" // translates CSS into CommonJS 
+            }, {
+                loader: "less-loader" // compiles Less to CSS 
+            }]
+        }]
+    }
+};
+½âÎöÇ°×º:
+¶ÔºĞÄ£ĞÍÔö¼ÓÇ°×º£º
+°²×°£ºnpm install postcss-loader ¡ªsave-dev
+	npm i autoprefixer --save-dev  ÆäÖĞĞ¡²¿·Ö¹¦ÄÜ×Ô¶¯¼ÓÇ°×º
+Í¼Æ¬ÅäÖÃ
+npm install --save-dev url-loader
+npm i file-loader --save-dev´¦ÀíÎÄ¼ş
+ rules: [
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      }
+    ]
+´¦Àíhtml
+npm i html-webpack-plugin --save-dev
+npm i html-loader --save-dev
+ new HtmlWebpackPlugin({
+      template:'index.html¡¯,//±¾µØÄ£°åÎ»ÖÃ
+      filename:'index.html¡¯,//Ö¸¶¨Êä³öÄ¿Â¼ÎÄ¼şÎ»ÖÃ
+      title:'index',
+      inject:true,
+      hash:true,
+      chunks:['index']
+    })
+  ]
+Í¼Æ¬´¦Àí
+npm i file-loader --save-dev´¦ÀíÎÄ¼ş
+Npm I url-loader ¡ªsave-devÍ¼Æ¬Â·¾¶
+ÔÚoutputÖĞ£¬¸ù¾İÒıÈëÂ·¾¶ÉèÖÃpublicPath:¡¯./¡¯
+  {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        use:[
+          {
+            loader:'url-loader',
+            options:{
+              limit:1000,
+              name:'img/[name].[hash:7].[ext]'
+            }
+          }
+        ]
+      }
+  <img src=<%= require('../img/login_cn.png') %> alt="loginÍ¼¼ÓÔØÖĞ..." class="Welcome_use p_title" />
+Æğ·şÎñ
+1.npm I webpack-dev-server ¡ªsave-dev°²×°·şÎñÆ÷
+Npm I html-loader ¡ªsave-dev
+2.ÔÚpackagejsonÖĞÅäÖÃdev
+cross-env£ºÊÇÖ¸ÔËĞĞ¿çÆ½Ì¨ÉèÖÃºÍÊ¹ÓÃ»·¾³±äÁ¿µÄ½Å±¾
+npm install --save-dev cross-env
+
+"scripts": {
+    "dev": "cross-env WEBPACK_ENV=dev webpack-dev-server --inline --port 8088",
+    "build": "cross-env WEBPACK_ENV=online webpack -p"
+  },
+devServer: {
+    historyApiFallback: true,
+    noInfo: true,
+    overlay: true
+  },
+var WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';  Çø·Ö¿ª·¢»·¾³ÓëÉú²ú»·¾³
+³éÀëcss ÊÇÖ¸ÔÚjsÖĞ°Écss³éÀë³öÀ´  Ìí¼Óµ½´ò°üºÃµÄÎÄ¼ş¼ĞÏÂ
+1.°²×°£ºnpm install extract-text-webpack-plugin --save-dev
+2.ÒıÈë£ºconst ExtractTextPlugin = require("extract-text-webpack-plugin");
+3.Ê¹ÓÃ£º
+ {
+        test: /\.less|css$/,
+        loaders: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', 'less-loader'])//±ØĞë°´Õâ¸öË³Ğòcss-loader','postcss-loader','less-loader´ÓÓÒÍù×óÖ´ĞĞ
+      },
+
+4.²å¼ş³éÀë£ºnew ExtractTextPlugin("css/[name].css"), ´ÓjsÖĞ³éÀë³öÀ´µÄcss·Åµ½´ò°üÎÄ¼şÏÂµÄcssÄ¿Â¼ÏÂ
+cssÑ¹Ëõ
+1.°²×°£ºnpm I optimize-css-assets-webpack-plugin  ¡ªsave-dev
+2.ÒıÈë£ºconst OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+3.ÅäÖÃ²å¼ş£º
+ new OptimizeCSSPlugin({
+      cssProcessorOptions: config.build.productionSourceMap
+      ? { safe: true, map: { inline: false } }
+      : { safe: true }
+    }),
+JsÑ¹Ëõ
+uglifyjs-webpack-plugin  Õâ¸öÊÇwebpackÏÂÃæ×Ô´øµÄ²»ĞèÒª°²×°£¬²»ĞèÒªÒıÈë£¬Ö±½ÓÅäÖÃ
+new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false//ÊÇ·ñÏÔÊ¾¾¯¸æ
+      },
+      sourceMap:false,//ÊÇ·ñÒªmapÎÄ¼ş
+      parallel: true//½«jsÆ½ĞĞ»¯
+    }),
+
+×¢Òâ£º¿ª·¢»·¾³²»ÒªÑ¹Ëõ£¬Ö»ÊÇÔÚ´ò°ü»·¾³ÏÂÑ¹Ëõ
+
+
+ÔÚwebpackÖĞÅäÖÃÒ³ÃæÒıÈëfont
+1.ÅäÖÃ
+ {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name:'font/[name].[hash:7].[ext]'
+        }
+      },
+2.ÔÚjsÖĞÒıÈëimport '../../font/css/iconfont.css'
+×¢Òâ£º±ØĞëÔÚÒ³Ãæ¼Óiconä¯ÀÀÆ÷²ÅÄÜÓĞfontÎÄ¼ş

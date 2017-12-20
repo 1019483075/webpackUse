@@ -1,0 +1,54 @@
+@charset "utf-8";
+/**
+* Theme Name: base.css
+* Author: Javin
+* Version: 1.0
+* Time:2014.07.24
+**/
+
+/*CSS reset*/
+html{color:#000;background:#FFF;/*-webkit-text-size-adjust:none;*/}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+del,ins{text-decoration:none;}
+ol,ul,li{list-style:none;}
+caption,th{text-align:left;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup,sub{vertical-align:baseline;}
+legend{color:#000;}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+input,button,textarea,select{*font-size:100%;}
+a {text-decoration:none;}
+input{
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+      /*-webkit-user-select: none;
+      -moz-user-focus: none;
+      -moz-user-select: none;*/
+       /*-webkit-appearance:none;*/
+       /*outline: none;*/
+       border: none;
+       -webkit-outline:none;
+       outline: none;
+}
+select{
+	 -webkit-appearance: none;/*delete  ios background*/
+	 background: url() no-repeat right ;
+  outline: none;
+}
+/*mobile*/
+*{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+body {font-size:14px; line-height:1.3; font-family:"Microsoft YaHei";}
+/*img {border:0;width:100%; height:auto;}*/
+div,li{box-sizing:border-box;}
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #333;
+  line-height: 1.3;
+  font-family: " Helvetica Neue,Tahoma,Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft Yahei,sans-serif";
+}

@@ -1,0 +1,74 @@
+@wid:100%;
+@hei:100%;
+html,body{
+  width:@wid;
+  height: @hei;
+  background: #fff;
+  display: flex;
+  line-height: 1.2;
+  .Wrap_Box{
+    width: @wid;
+    height: @hei;
+    .header{
+      width: @wid;
+      // background-image: url('../../img/login_cn.png');
+      // background-size: 100% 150px;
+      img{
+        display: block;
+        width:100%;
+      }
+    }
+    .section{
+      width: @wid;
+      height: auto;
+      padding-bottom: 100px;
+      .login{
+        width:@wid;
+        height: auto;
+        padding: 0.293333rem 0.933333rem 0 0.933333rem;
+        .login__item{
+          width: @wid;
+          height: 1.333333rem;
+          font-size: 0.4rem;
+          border: 1px solid #d3d3d3;
+          margin-bottom: 0.426666rem;
+          border-radius: .266666rem;
+          .login__item__left{
+            width: 20%;
+            height: 100%;
+            text-align: center;
+            float: left;
+            text-align: center;
+            line-height: 1.333333rem;
+            .item__left--user{
+              font-size: 0.6rem;
+              color: #1fbcff;
+            }
+          }
+          .login__item__input{
+            width: 69%;
+            height: 100%;
+            line-height: 1.333333rem;
+            float: left;
+            border: none;
+            font-size: 0.32rem;
+          }
+          .login__item__right{
+            width: 10%;
+            height: 100%;
+            text-align: center;
+            float: left;
+            text-align: center;
+            line-height: 1.333333rem;
+            .item__right--delete{
+              color: #fdc41f;
+              text-align: center;
+              vertical-align: middle;
+              font-size: 0.546666rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
