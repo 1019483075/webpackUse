@@ -17,12 +17,15 @@ var getHtmlConfig = function (name, title) {
     filename: 'view/' + name + '.html',//生成模板的名字
     title: title,
     inject: true,
-    hash: true
+    hash: true,
+    chunks: [name]//多页面必须配置
   }
 }
 var config = {
   entry: {
-    'login': './src/pages/login/login.js'
+    'login':['./src/pages/login/login.js'] ,
+    'device':['./src/pages/device/device.js']
+
   },
   output: {
     path: path.resolve(__dirname, './dist'),//编译目录不能用于html中的js
@@ -65,7 +68,15 @@ var config = {
             }
           }
         ]
-      }
+      },
+      // {
+      //   test: /\.art$/,
+      //   loader: "art-template-loader",
+      //   options: {
+      //     // art-template options (if necessary)
+      //     // @see https://github.com/aui/art-template
+      //   }
+      // }
     ]
   },
   devServer: {
@@ -78,7 +89,7 @@ var config = {
   plugins: [
     // new webpack.optimize.CommonsChunkPlugin({//生产通用模块
     //   name: 'common',
-    //   filename: 'js/base.js'
+    //   filename: 'js/common.js'
     // }),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
@@ -96,6 +107,7 @@ var config = {
     }),
     
     new HtmlWebpackPlugin(getHtmlConfig('login', '登录')),
+    new HtmlWebpackPlugin(getHtmlConfig('device', '设备')),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, './static'),

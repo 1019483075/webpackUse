@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env WEBPACK_ENV=dev webpack-dev-server --inline --port 8088",
-     "build": "cross-env WEBPACK_ENV=online webpack -p"
+    "build": "cross-env WEBPACK_ENV=online webpack -p"
   },
   "author": "luoling",
   "license": "ISC",
   "devDependencies": {
+    "art-template": "^4.12.2",
+    "art-template-loader": "^1.4.3",
     "autoprefixer": "^7.2.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -19,6 +21,7 @@
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
