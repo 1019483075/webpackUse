@@ -18,11 +18,12 @@ var getHtmlConfig = function (name, title) {
     title: title,
     inject: true,
     hash: true,
-    chunks: [name]//多页面必须配置
+    chunks: ['common',name]//多页面必须配置
   }
 }
 var config = {
   entry: {
+    'common':['./src/pages/common/index.js'],
     'login':['./src/pages/login/login.js'] ,
     'device':['./src/pages/device/device.js']
 
@@ -87,9 +88,12 @@ var config = {
     overlay: true
   },
   plugins: [
-    // new webpack.optimize.CommonsChunkPlugin({//生产通用模块
-    //   name: 'common',
-    //   filename: 'js/common.js'
+    new webpack.optimize.CommonsChunkPlugin({//生产通用模块
+      name: 'common',
+      filename: 'js/common.js'
+    }),
+    // new webpack.ProvidePlugin({//全局化引入jquery
+    //   $:"jquery"
     // }),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
