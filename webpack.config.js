@@ -18,7 +18,7 @@ var getHtmlConfig = function (name, title) {
     title: title,
     inject: true,
     hash: true,
-    chunks: ['common',name]//多页面必须配置
+    chunks: ['common',name]//多页面必须配置  用来区分自用引入外部资源的文件
   }
 }
 var config = {

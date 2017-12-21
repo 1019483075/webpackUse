@@ -8,6 +8,6 @@ const bb=()=>{
   console.log('bbb')
 }
 bb()
-$('.login__item').click(function(){
-  console.log(1)
-})
+// $('.login__item').click(function(){
+//   console.log(1)
+// })
