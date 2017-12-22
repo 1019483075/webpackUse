@@ -25,7 +25,8 @@ var config = {
   entry: {
     'common':['./src/pages/common/index.js'],
     'login':['./src/pages/login/login.js'] ,
-    'device':['./src/pages/device/device.js']
+    'device':['./src/pages/device/device.js'],
+    'menu':['./src/pages/menu/menu.js']
 
   },
   output: {
@@ -112,6 +113,7 @@ var config = {
     
     new HtmlWebpackPlugin(getHtmlConfig('login', '登录')),
     new HtmlWebpackPlugin(getHtmlConfig('device', '设备')),
+    new HtmlWebpackPlugin(getHtmlConfig('menu', '设备')),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, './static'),
